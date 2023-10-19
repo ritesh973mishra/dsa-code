@@ -45,3 +45,28 @@ function largestSubArraySum(arr,taget){
 }
 
 // console.log(largestSubArraySum([2, 3, -5,5, 1,-11, 9]))
+function largestSubArraySum(arr, target) {
+    let sum = 0;
+    let maxLen = 0;
+    let left = 0;
+    let right = 0;
+    let currentSum = 0;
+
+    while (right < arr.length) {
+        currentSum += arr[right];
+
+        while (currentSum > target) {
+            currentSum -= arr[left];
+            left++;
+        }
+
+        if (currentSum == target) {
+            maxLen = Math.max(maxLen, right - left + 1);
+        }
+
+        sum = Math.max(sum, currentSum);
+        right++;
+    }
+
+    return { sum, maxLen };
+}
