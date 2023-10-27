@@ -42,3 +42,31 @@ var twoSum = function(numbers, target) {
 
 const result  = twoSum([2,61,4,6],10)
 console.log("++++++++++++++++++++++",result)
+
+
+
+var threeSum = function(numbers, target) {
+    for (let i = 0; i < numbers.length - 2; i++) {
+        let left = i + 1;
+        let right = numbers.length - 1;
+        
+        while (left < right) {
+            const sum = numbers[i] + numbers[left] + numbers[right];
+            
+            if (sum === target) {
+                return [i + 1, left + 1, right + 1];
+            } else if (sum < target) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+    }
+    
+};
+
+// Example usage:
+const numbers = [1, 2, 3, 4, 5, 6, 7];
+const target = 10;
+// const result = threeSum(numbers, target);
+// console.log(`Three-sum with target ${target}: [${result}]`);
