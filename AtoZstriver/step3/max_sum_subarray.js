@@ -10,7 +10,7 @@ function subarray(arr) {
   return sum;
 }
 
-console.log(subarray([1, 4, 2, -8, 2, 4, 6]));
+// console.log(subarray([1, 4, 2, -8, 2, 4, 6]));
 
 
 
@@ -32,14 +32,14 @@ function subarray(arr, target) {
   return sum;
 }
 
-console.log(subarray([1, 4, 2, -8, 2, 4, 6], 10)); // Example with a target of 10
+// console.log(subarray([1, 4, 2, -8, 2, 4, 6], 10)); // Example with a target of 10
 
 
 //with lenght
 function subarrayWithMaxLength(arr, target) {
   let maxLength = 0;
   let currentLength = 0;
-  let sum = 0;
+  let maxSum = 0;
   let currentSum = 0;
 
   for (let i = 0; i < arr.length; i++) {
@@ -52,11 +52,18 @@ function subarrayWithMaxLength(arr, target) {
     } else {
       currentLength++;
       maxLength = Math.max(currentLength, maxLength);
+      maxSum = Math.max(maxSum, currentSum);
     }
   }
 
-  return maxLength;
+  return [maxSum, maxLength];
 }
 
-console.log(subarrayWithMaxLength([1, 4, 2, -8, 2, 4, 6], 10)); // Example with a target of 10
+// Example usage:
+const array = [2, 1, 5, 1, 3, 2];
+const target = 8;
+const result = subarrayWithMaxLength(array, target);
+console.log(`Maximum subarray sum: ${result[0]}`);
+console.log(`Maximum subarray length: ${result[1]}`);
+
 
